@@ -50,5 +50,4 @@ public class Directores {
     public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;
     }
-
 }

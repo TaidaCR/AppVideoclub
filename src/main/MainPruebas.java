@@ -9,7 +9,7 @@ import src.modeloo.DirectoresDAO;
 import src.modeloo.Peliculas;
 import src.modeloo.PeliculasDAO;
 
-public class Main {
+public class MainPruebas {
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner (System.in);
 
@@ -43,33 +43,7 @@ public class Main {
         }
         System.out.println("-----------------");
 
-        /*
-        //MODIFICAR DIRECTOR POR ATRIBUTO
-        System.out.println("DESEA MODIFICAR UN DIRECTOR?: -S- Si, -N- No");
-        String respuesta = scanner.nextLine();
-        if (respuesta.equalsIgnoreCase("S")){
-            DirectoresDAO dao3 = new DirectoresDAO ("./data/create_database.sqlite");
-            System.out.print("Introduce el id del director: ");
-            int id = scanner.nextInt(); //Obtengo el id
-            scanner.nextLine();
-            
-            Directores dir = new Directores(id, dao3.buscarPorId(id).getNombre());
-
-            System.out.println(String.format("Director a modificar: ID - %s, NOMBRE - %s, URLFOTO - %s, URLWEB - %s", dir.getId(), dir.getNombre(), dir.getUrlFoto(), dir.getUrlWeb()));
-            System.out.println("Introduzca para modificar: -N- nombre, -W- web, -F- Foto: ");
-            String parametroAModificar = scanner.nextLine();
-            System.out.println("Introduzca el nuevo valor o texto: ");
-            String nuevoDato = scanner.nextLine();
-    
-            dao3.modificaDirectorPorAtributo(dir, nuevoDato, parametroAModificar);
-        } else if (respuesta.equalsIgnoreCase("N")){
-            System.out.println("Finalizado");
-        }
-        System.out.println("-----------------");
-         */
-        
-
-        //MODIFICAR DIRECTOR COMPLETO
+        //MODIFICAR DIRECTOR
         System.out.println("DESEA MODIFICAR UN DIRECTOR?: -S- Si, -N- No");
         String respuesta = scanner.nextLine();
         if (respuesta.equalsIgnoreCase("S")){
@@ -141,24 +115,6 @@ public class Main {
         }
 
         System.out.println("-----------------");
-
-        /*
-        //MODIFICAR PELICULA POR ATRIBUTO
-        System.out.println("MODIFICAR PELICULA");
-        System.out.println("Introduce el id: ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
-        Peliculas peliculaModificado = dao1.devolverDatosCompletos(id);
-
-        System.out.println("Introduzca para modificar: -T- Titulo, -A- Año, -D- Director, -G- Género: ");
-        String parametroAModificar = scanner.nextLine();
-        System.out.println("Introduzca el nuevo valor o texto: ");
-        String nuevoDato = scanner.nextLine();
-
-        dao1.modificaPeliculaPorAtributo(peliculaModificado, nuevoDato, parametroAModificar);
-
-        
-         */
         scanner.close();
     }
 }

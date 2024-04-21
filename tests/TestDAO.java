@@ -71,25 +71,9 @@ public class TestDAO{
         Directores directorActualizado = dao.devolverTodosDatosDirector(1);
 
         assertEquals("Christopher Nolan", directorActualizado.getNombre());
-       
     }
-
-    /*
-    @Test
-    public void testModificaDirectorSegunAtributo() throws SQLException{
-        
-        DirectoresDAO dao = new DirectoresDAO("./data/create_database.sqlite");
-        Directores dir = dao.buscarPorId(1); //Antoine
-        
-        dao.modificaDirectorPorAtributo(dir, "Christopher nolan", "N");
-
-        assertEquals(dao.getNombreDirector(1), "Christopher nolan");
-    }
-     */
     
-
     //TESTS PELICULAS
-    
     @Test
     public void testDameTodosPeliculas() throws SQLException{
 
@@ -109,7 +93,6 @@ public class TestDAO{
         assertEquals("The Dark Knight", peli.getTitulo());
         assertEquals("James Cameron", peli.getDirector());
         assertEquals(Generos.ACCION,peli.getGenero());
-        
     }
 
     @Test
@@ -146,7 +129,5 @@ public class TestDAO{
         assertEquals(0, peliculaActualizada.getEsAnimacion());
         assertEquals("Inception", peliculaActualizada.getTitulo());
         assertEquals(3, peliculaActualizada.getId_director());
-       
     }
-
 }
