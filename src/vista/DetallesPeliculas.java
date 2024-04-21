@@ -41,7 +41,7 @@ public class DetallesPeliculas extends JPanel{
 
         for (Peliculas pelicula: listaPelis){
             txtTitulo = new JTextField(pelicula.getTitulo());
-            txtAnyo = new JTextField(String.valueOf(pelicula.getanyo()));
+            txtAnyo = new JTextField(String.valueOf(pelicula.getAnyo()));
             txtGenero = new JTextField(pelicula.getGenero().toString());
             txtDirector = new JTextField(pelicula.getDirector());
             add(txtTitulo);

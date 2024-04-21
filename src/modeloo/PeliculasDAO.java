@@ -33,14 +33,12 @@ public class PeliculasDAO {
             
             listaPeliculas.add(pelicula);
         }
-
         return listaPeliculas;
     }
 
     public String getNombreDirector(int directorId, Connection conn) throws SQLException {
         String sql = "SELECT nombre FROM directores WHERE id=?";
 
-        //Connection conn = new Utilidades().getConnection("./data/create_database.sqlite");
         PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
         sentenciaSQL.setInt(1, directorId);
         ResultSet resultado = sentenciaSQL.executeQuery();
@@ -53,12 +51,10 @@ public class PeliculasDAO {
         
         resultado.close();
         sentenciaSQL.close();
-        //conn.close();
         return nombreDirector;
     }
 
     //BUSCAR POR ID
-    //FUNCIONA PERO SE CONECTA DOS VECES
     public Peliculas buscarPorId(int id) throws SQLException{
         String sql = "SELECT * FROM peliculas WHERE id=?;";
         
@@ -68,18 +64,16 @@ public class PeliculasDAO {
 
         ResultSet resultado = sentenciaSQL.executeQuery();
         Peliculas peli = null;
-        //DirectoresDAO dir = new DirectoresDAO("./data/create_database.sqlite");
 
         if (resultado.next()){
 
             //Nombre Director
-            int dire = resultado.getInt("id_director"); //3
-            
+            int dire = resultado.getInt("id_director"); 
             String direString = getNombreDirector(dire, conn);
 
             //Nombre Genero
-            int generoId = resultado.getInt("id_genero"); // Obtener el ID del género
-            String generoString = Generos.getNombre(generoId);
+            int generoId = resultado.getInt("id_genero");
+            String generoString = Generos.getNombreGenero(generoId);
 
             peli = new Peliculas(
                         resultado.getString("titulo"),
@@ -111,13 +105,12 @@ public class PeliculasDAO {
         if (resultado.next()){
 
             //Nombre Director
-            int dire = resultado.getInt("id_director"); //3
-            //DirectoresDAO dir = new DirectoresDAO("./data/create_database.sqlite");
+            int dire = resultado.getInt("id_director");
             String direString = getNombreDirector(dire, conn);
 
             //Nombre Genero
             int generoId = resultado.getInt("id_genero"); // Obtener el ID del género
-            String generoString = Generos.getNombre(generoId);
+            String generoString = Generos.getNombreGenero(generoId);
 
             peli = new Peliculas (resultado.getString("titulo"),
                                     direString,
@@ -152,74 +145,15 @@ public class PeliculasDAO {
         conn.close();
     }
 
-    /*
-    public void modificaPeliculaPorAtributo (Peliculas pelicula, String nuevoDato, String parametroAModificar) throws SQLException{
-        Connection conn = new Utilidades().getConnection("./data/create_database.sqlite");
-        
-        if ("T".equalsIgnoreCase(parametroAModificar)){ //MODIFICAR NOMBRE
-            String sql = "UPDATE peliculas SET titulo=? WHERE id=?";
-            PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
-            sentenciaSQL.setString(1, nuevoDato);
-            sentenciaSQL.setInt(2, pelicula.getId());
-            
-            sentenciaSQL.executeUpdate();
-            sentenciaSQL.close();
-
-        }else if ("A".equalsIgnoreCase(parametroAModificar)){ //MODIFICAR AÑO
-            String sql = "UPDATE peliculas SET anyo=? WHERE id=?";
-            PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
-            sentenciaSQL.setInt(1, Integer.parseInt(nuevoDato));
-            sentenciaSQL.setInt(2, pelicula.getId());
-
-            sentenciaSQL.executeUpdate();
-            sentenciaSQL.close();
-        }else if ("D".equalsIgnoreCase(parametroAModificar)){ //MODIFICAR ID_DIRECTOR
-            String sql = "UPDATE peliculas SET id_director=? WHERE id=?";
-            PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
-            sentenciaSQL.setInt(1, Integer.parseInt(nuevoDato));
-            sentenciaSQL.setInt(2, pelicula.getId());
-
-            sentenciaSQL.executeUpdate();
-            sentenciaSQL.close();
-        }else if ("G".equalsIgnoreCase(parametroAModificar)){ //MODIFICAR GENERO
-            String sql = "UPDATE peliculas SET id_genero=? WHERE id=?";
-            PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
-            sentenciaSQL.setInt(1, Integer.parseInt(nuevoDato));
-            sentenciaSQL.setInt(2, pelicula.getId());
-
-            sentenciaSQL.executeUpdate();
-            sentenciaSQL.close();
-        }else if ("C".equalsIgnoreCase(parametroAModificar)){ //MODIFICAR CARATULA
-            String sql = "UPDATE peliculas SET url_caratula=? WHERE id=?";
-            PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
-            sentenciaSQL.setString(1, nuevoDato);
-            sentenciaSQL.setInt(2, pelicula.getId());
-
-            sentenciaSQL.executeUpdate();
-            sentenciaSQL.close();
-        }else if ("E".equalsIgnoreCase(parametroAModificar)){ //MODIFICAR ESANIMACION
-            String sql = "UPDATE peliculas SET es_animacion=? WHERE id=?";
-            PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
-            sentenciaSQL.setInt(1, Integer.parseInt(nuevoDato));
-            sentenciaSQL.setInt(2, pelicula.getId());
-
-            sentenciaSQL.executeUpdate();
-            sentenciaSQL.close();
-        }
-        conn.close(); 
-    }
-     */
-    
-
-    //MODIFICAR TODOS LOS DATOS DE UNA PELICULA
-    public void modificaPeliculaEntera (Peliculas pelicula) throws SQLException{
+    //MODIFICAR PELICULA
+    public void modificarPelicula (Peliculas pelicula) throws SQLException{
         String sql = "UPDATE peliculas SET titulo=?, id_director = ?, anyo = ?, url_caratula = ?, id_genero = ?, es_animacion = ? WHERE id=?";
 
         Connection conn = new Utilidades().getConnection("./data/create_database.sqlite");
         PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
         sentenciaSQL.setString(1, pelicula.getTitulo());
         sentenciaSQL.setInt(2, pelicula.getId_director());
-        sentenciaSQL.setInt(3, pelicula.getanyo());
+        sentenciaSQL.setInt(3, pelicula.getAnyo());
         sentenciaSQL.setString(4, pelicula.getUrlCaratula());
         sentenciaSQL.setInt(5, pelicula.getId_genero());
         sentenciaSQL.setInt(6, pelicula.getEsAnimacion());

@@ -89,7 +89,7 @@ public class TestDAO{
         PeliculasDAO dao = new PeliculasDAO("./data/create_database.sqlite");
         Peliculas peli = dao.buscarPorId(3);
 
-        assertEquals(2008, peli.getanyo());
+        assertEquals(2008, peli.getAnyo());
         assertEquals("The Dark Knight", peli.getTitulo());
         assertEquals("James Cameron", peli.getDirector());
         assertEquals(Generos.ACCION,peli.getGenero());
@@ -100,7 +100,7 @@ public class TestDAO{
         PeliculasDAO dao = new PeliculasDAO("./data/create_database.sqlite");
         Peliculas peli = dao.buscarPorTitulo("Inception");
 
-        assertEquals(2010, peli.getanyo());
+        assertEquals(2010, peli.getAnyo());
         assertEquals("Inception", peli.getTitulo());
         assertEquals(Generos.SCIFI, peli.getGenero());
         assertEquals("James Cameron", peli.getDirector());
@@ -121,11 +121,11 @@ public class TestDAO{
         Peliculas peli = new Peliculas(1, "Inception", 3, 2011, 9, "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg", 0);
         PeliculasDAO dao = new PeliculasDAO("./data/create_database.sqlite");
         
-        dao.modificaPeliculaEntera(peli);
+        dao.modificarPelicula(peli);
 
         Peliculas peliculaActualizada = dao.devolverDatosCompletos(peli.getId());
 
-        assertEquals(2011, peliculaActualizada.getanyo());
+        assertEquals(2011, peliculaActualizada.getAnyo());
         assertEquals(0, peliculaActualizada.getEsAnimacion());
         assertEquals("Inception", peliculaActualizada.getTitulo());
         assertEquals(3, peliculaActualizada.getId_director());

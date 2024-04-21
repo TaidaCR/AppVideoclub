@@ -1,24 +1,6 @@
 package src.modeloo;
 
 public enum Generos {
-    /*
-    private int id;
-    private String descripcion;
-
-    public Generos (int id, String descripcion ){
-        this.id=id;
-        this.descripcion=descripcion;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public int getId() {
-        return id;
-    }
-     */
-    
     TERROR(1),
     ACCION(2),
     COMEDIA(3),
@@ -43,7 +25,7 @@ public enum Generos {
         return id;
     }
     
-    public static String getNombre(int id){
+    public static String getNombreGenero(int id){
         String gen="";
         for(Generos genero:Generos.values()){
             if (genero.getId()==id){
@@ -52,10 +34,5 @@ public enum Generos {
             }
         }
         return gen;
-
     }
-    
-    
-
-    
 }

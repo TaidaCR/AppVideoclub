@@ -29,7 +29,7 @@ public class MainPruebas {
 
         Peliculas peliUnica = dao1.buscarPorId(id_pelicula);
 
-        System.out.println(String.format("%s - %s - %s - %s", peliUnica.getTitulo(), peliUnica.getanyo(), peliUnica.getDirector(), peliUnica.getGenero()));
+        System.out.println(String.format("%s - %s - %s - %s", peliUnica.getTitulo(), peliUnica.getAnyo(), peliUnica.getDirector(), peliUnica.getGenero()));
         System.out.println("-----------------");
         
         //DEVOLVER TODAS LAS PELIS DE LA LISTA
@@ -39,7 +39,7 @@ public class MainPruebas {
         listaPelis = dao1.dameTodos();
 
         for (Peliculas peli:listaPelis){
-            System.out.println(String.format("%s - %s - %s - %s", peli.getTitulo(), peli.getanyo(), peli.getDirector(), peli.getGenero())); 
+            System.out.println(String.format("%s - %s - %s - %s", peli.getTitulo(), peli.getAnyo(), peli.getDirector(), peli.getGenero())); 
         }
         System.out.println("-----------------");
 
@@ -86,7 +86,7 @@ public class MainPruebas {
 
             Peliculas peli = dao4.devolverDatosCompletos(id);
 
-            System.out.println(String.format("Peli a modificar: ID - %s, TITULO - %s, ID_DIRECTOR - %s, AÑO - %s, URL CARATULA - %s, ANIMACION - %s, ID_GENERO - %s", id, peli.getTitulo(), peli.getId_director(), peli.getanyo(), peli.getUrlCaratula(), peli.getEsAnimacion(), peli.getId_genero()));
+            System.out.println(String.format("Peli a modificar: ID - %s, TITULO - %s, ID_DIRECTOR - %s, AÑO - %s, URL CARATULA - %s, ANIMACION - %s, ID_GENERO - %s", id, peli.getTitulo(), peli.getId_director(), peli.getAnyo(), peli.getUrlCaratula(), peli.getEsAnimacion(), peli.getId_genero()));
 
             System.out.println("Introduce el título: ");
             String nombre=scanner.nextLine();
@@ -109,7 +109,7 @@ public class MainPruebas {
 
             Peliculas peliModificada = new Peliculas (id, nombre,id_director,anyo,id_genero,url_caratula,es_animacion);
 
-            dao4.modificaPeliculaEntera(peliModificada);
+            dao4.modificarPelicula(peliModificada);
         } else if (respuesta.equalsIgnoreCase("N")){
             System.out.println("Finalizado");
         }

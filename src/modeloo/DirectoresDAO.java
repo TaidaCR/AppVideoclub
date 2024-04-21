@@ -28,7 +28,6 @@ public class DirectoresDAO{
             dir = new Directores(resultado.getInt("id"), resultado.getString("nombre"));
             listaDirectores.add(dir);
         }
-
         return listaDirectores;
     }
 
@@ -94,36 +93,6 @@ public class DirectoresDAO{
         sentenciaSQL.close();
         conn.close();
     }
-
-    /*
-    public void modificaDirectorPorAtributo (Directores director, String nuevoDato, String parametroAModificar) throws SQLException{
-        Connection conn = new Utilidades().getConnection("./data/create_database.sqlite");
-       
-        if ("N".equalsIgnoreCase(parametroAModificar)){ //MODIFICAR NOMBRE
-            String sql = "UPDATE directores SET nombre=? WHERE id=?";
-            PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
-            sentenciaSQL.setString(1, nuevoDato);
-            sentenciaSQL.setInt(2, director.getId());
-
-            sentenciaSQL.executeUpdate();
-        }else if ("W".equalsIgnoreCase(parametroAModificar)){ //MODIFICAR URL FOTO
-            String sql = "UPDATE directores SET url_foto=? WHERE id=?";
-            PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
-            sentenciaSQL.setString(1, nuevoDato);
-            sentenciaSQL.setInt(2, director.getId());
-
-            sentenciaSQL.executeUpdate();
-        }else if ("F".equalsIgnoreCase(parametroAModificar)){ //MODIFICAR URL WEB
-            String sql = "UPDATE peliculas SET url_web=? WHERE id=?";
-            PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
-            sentenciaSQL.setString(1, nuevoDato);
-            sentenciaSQL.setInt(2, director.getId());
-
-            sentenciaSQL.executeUpdate();
-        }
-        conn.close();
-    }
-     */
 
     public void modificaDirectorEntero (Directores director) throws SQLException{
         String sql = "UPDATE directores set nombre = ?, url_foto = ?, url_web = ? WHERE id = ?";

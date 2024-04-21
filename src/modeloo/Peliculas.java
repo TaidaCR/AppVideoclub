@@ -37,7 +37,7 @@ public class Peliculas {
         return genero;
     }
 
-    public int getanyo() {
+    public int getAnyo() {
         return anyo;
     }
 
