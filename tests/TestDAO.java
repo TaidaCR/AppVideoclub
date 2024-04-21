@@ -54,11 +54,11 @@ public class TestDAO{
     public void testBorraDirectores() throws SQLException{
 
         DirectoresDAO dao = new DirectoresDAO("./data/create_database.sqlite");
-        Directores preBorrado = dao.buscarPorId(6);
+        Directores preBorrado = dao.buscarPorId(1);
 
         assertNotNull(preBorrado);
-        dao.borraDirector(6);
-        assertNull(dao.buscarPorId(6));
+        dao.borraDirector(1);
+        assertNull(dao.buscarPorId(1));
     }
 
     @Test
@@ -80,7 +80,7 @@ public class TestDAO{
         PeliculasDAO dao = new PeliculasDAO("./data/create_database.sqlite");
         ArrayList <Peliculas> listaPeliculas = dao.dameTodos();
 
-        assertEquals(7, listaPeliculas.size());      
+        assertEquals(8, listaPeliculas.size());      
     }
 
     @Test
@@ -109,11 +109,11 @@ public class TestDAO{
     @Test
     public void testBorraPelicula()throws SQLException{
         PeliculasDAO dao = new PeliculasDAO("./data/create_database.sqlite");
-        Peliculas preBorrado = dao.buscarPorId(5);
+        Peliculas preBorrado = dao.buscarPorId(1);
 
         assertNotNull(preBorrado);
-        dao.borraPelicula(5);
-        assertNull(dao.buscarPorId(5));
+        dao.borraPelicula(1);
+        assertNull(dao.buscarPorId(1));
     }
 
     @Test

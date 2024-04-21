@@ -28,6 +28,7 @@ CREATE TABLE "peliculas" (
 	"url_caratula"	TEXT,
 	"id_genero"	INTEGER,
 	"es_animacion"	INTEGER,
+	PRIMARY KEY("id"),
 	FOREIGN KEY("id_genero") REFERENCES "generos"("id"),
 	FOREIGN KEY("id_director") REFERENCES "directores"("id")
 );
